@@ -6,6 +6,8 @@ output: process.stdn
 
 })
 
+function mainMenu(){
+
 console.log("-------------------------");
 console.log("Factorial Application");
 console.log("1. Say Hello");
@@ -14,7 +16,7 @@ console.log("3. Exit Application");
 console.log("-------------------------");
 
 r1.question("Enter your choice (1-3): ", choice =>{
-console.log(choice);
+
 
 if (choice === "1"){
     console.log("Hello");
