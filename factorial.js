@@ -2,7 +2,7 @@ const readline=require("readline");
 
 const r1 = readline.createInterface({
 input:process.stdin,
-output: process.stdn
+output: process.stdout
 
 })
 
@@ -65,7 +65,7 @@ function backToMenu(){
     console.log("1. Back to Main Menu");
     console.log("2. Exit ");
 
-    r1.question("What would you like to do next  (1-2): ", choice =>{
+    r1.question("What would you like to do next  (1-2): ", (backToMenuChoice) =>{
 
         if (backToMenuChoice === "1"){
             console.clear();
