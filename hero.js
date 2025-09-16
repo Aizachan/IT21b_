@@ -17,7 +17,7 @@ class Hero {
         console.log("Name:" + this.name);
         console.log("Health:" + this.#health);
         console.log("Attack:" + this.attack);
-        this.console.log
+        this.console.log("-------------------");
     }
 
    
