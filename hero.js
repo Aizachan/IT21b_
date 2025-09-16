@@ -19,15 +19,37 @@ class Hero {
         console.log("Attack:" + this.attack);
         this.console.log("-------------------");
     }
+}
+    class Warrior extends Hero {
+        useAbility(){
+            console.log('${this.name}user Power Strike');
+        }
 
    
 }
-   
-    const hero1 = new Hero("Thorin", 100, 10)
-    const hero2 = new Hero("Gandalf", 100, 8)
+   class Mage extends Hero {
+    constructor(name, health, attack, mana) {
+        super(name, health, attack)
+        this.mana = mana
+    }
+    
+   useAbility(){
+    console.log('${this.name} cast Fireball');
+}
+    showStats() {
+        super.showStats();
+        console.log("Mana:" + this.mana);
+   }
+   }
 
-    hero1.showStats();
-    hero2.showStats();
+    const Thorin = new Thorin("Thorin", 100, 10)
+    const Gandalf= new Mage("Gandalf", 100, 8,50)
+
+    
+    // Thorin.showStats();
+    // Thorin.useAbility();
+    Grandalf.showStats();
+    Gandalf.useAbility();
 
 
     
