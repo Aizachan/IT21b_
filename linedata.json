@@ -1,6 +1,5 @@
 {
-    "labels": [
-        "January", "February", "March", "April", "May", "June", "July"],
+    "labels": [ "January", "February", "March", "April", "May", "June", "July"],
         "values": [10, 20, 30, 25, 40]
     
 }
