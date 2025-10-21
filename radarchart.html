@@ -11,6 +11,7 @@
         <canvas id="radarChart"></canvas>
     
         </body>
+        <script  src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
     class radarChart {
         constructor(canvasId,datraUrl){
@@ -52,6 +53,28 @@
                 }
             });
         }
+        async fatchingData(){
+            try{
+                const response = await fecht(this.dataUrl);
+                if (!response.ok) throw new Error(`Failed to load data: ${response.statusText}`);
+
+                const data = await response.json();
+                return data;
+
+            }catch(error){
+                console.error("Error fatching data:", error);
+                return null;
+            }
+        }
+        async init(){
+            const data = await this.fecthData();
+            if(data) this.rendarChart("radarData.json");
+            chart.init();
+        }
     }
+    document.addEventListener("DOMContentLoaded", ()=>{
+        const chart = new radarChart("radarChart","radarData.json");
+        chart.init();
+    });
 </script>
 </html>
