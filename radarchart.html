@@ -6,40 +6,40 @@
     <title>Radar Chart</title>
 </head>
 <body>
-    <h1>Radar Chart </h1>
+    <h1>Radar Chart</h1>
     <div>
         <canvas id="radarChart"></canvas>
-    
-        </body>
-        <script  src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-    class radarChart {
-        constructor(canvasId,datraUrl){
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    class radarChart{
+        constructor(canvasId,dataUrl){
             this.canvasId = canvasId;
             this.dataUrl = dataUrl;
             this.chart = null;
         }
+
         renderChart(data){
             const ctx = document.getElementById(this.canvasId).getContext("2d");
 
             this.chart = new Chart(ctx,{
                 type:"radar",
                 data:{
-                    //label
+                    //Labels
                     labels:data.labels,
                     //Datasets
-                    datasets:data.datasets
-
+                    datasets: data.datasets
                 },
                 options:{
-                    responsive:true,
+                    responsive: true,
                     plugins:{
                         legend:{
-                            position:"top"
+                           position:"top"
                         },
                         title:{
                             display: true,
-                            //title
+                            //Title
                             text:"Radar Chart"
                         }
                     },
@@ -53,25 +53,26 @@
                 }
             });
         }
-        async fatchingData(){
+
+        async fetchData(){
             try{
-                const response = await fecht(this.dataUrl);
-                if (!response.ok) throw new Error(`Failed to load data: ${response.statusText}`);
+                const response = await fetch(this.dataUrl);
+                if(!response.ok) throw new Error(`Failed to load data: ${response.statusText}`);
 
                 const data = await response.json();
                 return data;
-
-            }catch(error){
-                console.error("Error fatching data:", error);
+            } catch(error){
+                console.error("Error fetching data: ", error);
                 return null;
             }
         }
+
         async init(){
-            const data = await this.fecthData();
-            if(data) this.rendarChart("radarData.json");
-            chart.init();
+            const data = await this.fetchData();
+            if(data) this.renderChart(data);
         }
     }
+
     document.addEventListener("DOMContentLoaded", ()=>{
         const chart = new radarChart("radarChart","radarData.json");
         chart.init();
