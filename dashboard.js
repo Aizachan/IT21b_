@@ -14,7 +14,7 @@ class radarChart{
                     //Labels
                     labels:data.labels,
                     //Datasets
-                    datasets: data.datasets
+                    datasets: data.datasetsS
                 },
                 options:{
                     responsive: true,
